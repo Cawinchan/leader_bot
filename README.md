@@ -40,7 +40,7 @@ The **Board Game Tracker Bot** is a Telegram bot designed to make tracking board
 
 3. Set your TELEGRAM_BOT_TOKEN as a env variable
    ```bash
-   =export TELEGRAM_BOT_TOKEN="your-telegram-bot-token"
+   export TELEGRAM_BOT_TOKEN="your-telegram-bot-token"
    ```
 
 4. Run the bot:
