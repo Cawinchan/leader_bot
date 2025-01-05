@@ -91,6 +91,134 @@ Bot: 5.0 points have been subtracted from Charlie.
 - Python 3.8+
 - Telegram Bot Token (from [@BotFather](https://core.telegram.org/bots#botfather))
 
+Below is an **example** section you can add to your README, detailing **step-by-step instructions** for deploying your bot on [Fly.io](https://fly.io). Feel free to adjust for your specific workflow or preferences.
+
+---
+
+## Deploying on Fly.io
+
+### 1. Install **flyctl**
+
+**macOS, Linux, or WSL** (install latest version):
+```bash
+curl -L https://fly.io/install.sh | sh
+```
+
+**Install the latest pre-release version**:
+```bash
+curl -L https://fly.io/install.sh | sh -s pre
+```
+
+**Install a specific version (example: 0.0.200)**:
+```bash
+curl -L https://fly.io/install.sh | sh -s 0.0.200
+```
+
+**Windows**:  
+Open PowerShell and run:
+```powershell
+iwr https://fly.io/install.ps1 -useb | iex
+```
+
+> **Note**: After installation, ensure `flyctl` is accessible in your terminal (you may need to restart your shell or add it to your PATH).
+
+---
+
+### 2. Authenticate with Fly.io
+
+```bash
+fly auth login
+```
+Follow the prompts to sign in with your Fly.io account (or create one if needed).
+
+---
+
+### 3. Initialize Your Fly App
+
+Inside your **leader_bot** project directory:
+
+```bash
+flyctl launch
+```
+
+You’ll be prompted to:
+1. Choose a **unique name** for your app (e.g., `telegram-bot`).
+2. Select a **region** (for example, `sin` for Singapore).
+3. DO NOT create a new `fly.toml` file.
+4. DO NOT create a new .gitignore file
+
+> **Tip**: If you already created an app on Fly.io’s dashboard, you can skip naming or region prompts by specifying `--name` and `--region` flags to `flyctl launch`.
+
+---
+
+### 4. Configure Your Resources
+
+1. **Instances**:
+   ```bash
+   flyctl scale count 1
+   ```
+   This ensures only one instance of your bot is running to keep costs low.
+
+---
+
+### 5. Set Your Secrets
+
+Your bot token must be kept private, so store it as a Fly.io **secret**:
+```bash
+flyctl secrets set TELEGRAM_BOT_TOKEN=your_actual_token
+```
+Replace `your_actual_token` with the actual token from [@BotFather](https://core.telegram.org/bots#botfather).
+
+---
+
+### 6. Deploy Your Bot
+
+When ready, run:
+```bash
+flyctl deploy
+```
+Fly.io will build and deploy your Docker image (or use a builder like herokuish or Nixpacks, depending on your `fly.toml` config).
+
+---
+
+### 7. Monitoring & Logs
+
+1. **View logs**:
+   ```bash
+   flyctl logs
+   ```
+   This streams your application logs in real-time.
+
+2. **Monitor application health**:
+   ```bash
+   flyctl monitor
+   ```
+   This gives you a quick overview of CPU, memory usage, and other metrics in real time.
+
+3. **Check app status**:
+   ```bash
+   flyctl status
+   ```
+   See the current status of your running instance(s).
+
+---
+
+### 8. Common Next Steps
+
+- **Updating**: Make changes, then run `flyctl deploy` again. Fly.io will roll out your new version.
+- **Scaling**: 
+  - Increase memory or CPU if your bot needs more resources.  
+  - Add more instances if your usage spikes.  
+- **Secrets**: Update them anytime:
+  ```bash
+  flyctl secrets set NEW_SECRET=value
+  ```
+  Then Fly.io restarts your app with the updated environment variables.
+
+---
+
+With this, your **Board Game Tracker Bot** should be up and running on Fly.io, ready to track games and entertain users!
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
