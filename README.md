@@ -38,9 +38,9 @@ The **Board Game Tracker Bot** is a Telegram bot designed to make tracking board
    pip install -r requirements.txt
    ```
 
-3. Create a `.env` file with your Telegram bot token:
-   ```env
-   TELEGRAM_BOT_TOKEN=your-telegram-bot-token
+3. Set your TELEGRAM_BOT_TOKEN as a env variable
+   ```bash
+   =export TELEGRAM_BOT_TOKEN="your-telegram-bot-token"
    ```
 
 4. Run the bot:
