@@ -31,3 +31,63 @@ The **Board Game Tracker Bot** is a Telegram bot designed to make tracking board
    ```bash
    git clone https://github.com/your-username/board-game-tracker-bot.git
    cd board-game-tracker-bot
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Create a `.env` file with your Telegram bot token:
+   ```env
+   TELEGRAM_BOT_TOKEN=your-telegram-bot-token
+   ```
+
+4. Run the bot:
+   ```bash
+   python bot.py
+   ```
+
+## How It Works
+
+1. Use `/add` or `/add_auto` to record a game.
+2. The bot saves game details (name, players, rankings, and points) to an SQLite database.
+3. Check your progress with `/view` or `/leaderboard`.
+4. Remove outdated entries with `/remove`.
+5. Enjoy random comebacks or jokes using `/comeback` or `/dom`.
+
+## Example
+
+```plaintext
+User: /add_auto
+Bot: What game was played? (e.g., 'Catan')
+User: Chess
+Bot: Is this a 'solo' (1v1v1v1), 'team' (4v1), or 'pair' (2v2 or 2v3v2) game?
+User: solo
+Bot: Who played? Provide player names separated by commas.
+User: Alice, Bob, Charlie, Dave
+Bot: Now enter the rankings for each player in the same order.
+User: 1, 2, 3, 4
+Bot: What is the date of the game? (YYYY-MM-DD)
+User: today
+Bot: Game 'Chess' on 2025-01-05 recorded.
+Points awarded:
+Alice: +6
+Bob: +3
+Charlie: +1
+Dave: +0
+```
+
+## Requirements
+
+- Python 3.8+
+- Telegram Bot Token (from [@BotFather](https://core.telegram.org/bots#botfather))
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+Have fun tracking your board games and climbing the leaderboard! 🎲🏆
+```
