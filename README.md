@@ -90,4 +90,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 Have fun tracking your board games and climbing the leaderboard! 🎲🏆
-```
