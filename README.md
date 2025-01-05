@@ -29,7 +29,7 @@ The **Board Game Tracker Bot** is a Telegram bot designed to make tracking board
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/board-game-tracker-bot.git
+   git clone https://github.com/Cawinchan/leader_bot.git
    cd board-game-tracker-bot
    ```
 
